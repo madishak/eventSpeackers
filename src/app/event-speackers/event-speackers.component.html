@@ -1,0 +1,99 @@
+<mat-toolbar>
+  <span class="logo">Speackers</span>
+
+  <div>
+    <button
+      class="btn--popular"
+      mat-raised-button
+      color="accent"
+      (click)="showFavorites()"
+    >
+      SHOW All
+    </button>
+
+    <button
+      class="btn--popular"
+      mat-raised-button
+      color="accent"
+      (click)="popularity()"
+    >
+      POPULAR
+    </button>
+
+    <button
+      class="btn--popular"
+      mat-raised-button
+      color="accent"
+      (click)="unpopularity()"
+    >
+      UNPOPULAR
+    </button>
+  </div>
+
+  <span class="example-spacer">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input
+        class="search__input"
+        type="search"
+        matInput
+        placeholder="Your text"
+        [(ngModel)]="value"
+        (ngModelChange)="onChanges($event)"
+      />
+      <mat-icon matSuffix (click)="showValue()">search</mat-icon>
+    </mat-form-field>
+  </span>
+</mat-toolbar>
+
+<div class="cards">
+  <div *ngFor="let speaker of speakers">
+    <mat-card class="example-card speakers">
+      <mat-card-title>{{ speaker.user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ speaker.user.company }} COMPANY</mat-card-subtitle>
+
+      <img
+        mat-card-image
+        src="https://picsum.photos/id/{{
+          speaker.user.index ? speaker.user.index * 2 : 1
+        }}/250/"
+        alt="Photo"
+      />
+      <mat-card-content>
+        <p>{{ speaker.user.about }}</p>
+        <p></p>
+      </mat-card-content>
+      <mat-card-actions class="card__btns">
+        <button
+          *ngIf="!speaker.favor; else elseBlock"
+          (click)="onClickFavorites(speaker.user._id)"
+          mat-mini-fab
+          aria-label="Example icon-button with a heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <ng-template #elseBlock>
+          <button
+            class="secondBtn"
+            (click)="onClickId(speaker.user._id)"
+            mat-mini-fab
+            aria-label="Example icon-button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </ng-template>
+
+        <div class="rating">
+          <ul class="rating-list" *ngFor="let star of stars">
+            <li
+              (click)="countStar(speaker.user._id, star)"
+              [ngClass]="{ selected: star <= speaker.rating }"
+            >
+              <mat-icon>star_rate</mat-icon>
+            </li>
+          </ul>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+mat-toolbar {
+  background-color: #4acf35;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  flex: 1 1 auto;
+}
+
+.btn--popular {
+  border-radius: 0;
+  margin: 0 10px;
+}
+
+.example-spacer {
+  margin: 17px 0 0 10px;
+}
+
+.example-form-field {
+  width: 200px;
+}
+
+.search__input {
+  font-size: 14px;
+}
+
+.example-card {
+  max-width: 250px;
+  margin-top: 20px;
+  border-radius: 0;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card__btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favourite {
+  background-color: #ffe524;
+}
+
+.speakers .selectedPink {
+  background-color: red;
+}
+
+.speakers .selectedYellow {
+  background-color: #ffe524;
+}
+
+.secondBtn {
+  background-color: #ffe524;
+}
+
+.hideBtn {
+  display: none;
+}
+
+.rating {
+  display: flex;
+}
+.rating-list {
+  padding: 0;
+}
+.rating-list li {
+  display: inline-block;
+  color: #ddd;
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li {
+  color: #ffe524;
+}
+
+.rating-list {
+  list-style: none;
+}
+
+.rating-list li.selected {
+  color: #ffe524;
+}
